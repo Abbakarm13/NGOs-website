@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Sumbangan untuk Salam Sakinah - Bantu kami dalam usaha dakwah dan kebajikan." />
+  <meta name="keywords" content="sumbangan, sedekah, zakat, infaq, wakaf" />
+  <meta name="author" content="Salam Sakinah" />
+  <title>Sumbangan | Salam Sakinah</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+
+  <header>
+    <h1>Sumbangan</h1>
+    <nav aria-label="Main navigation">
+      <a href="index.html">Utama</a>
+      <a href="about.html">Tentang Kami</a>
+      <a href="programs.html">Program</a>
+      <a href="donation.html" aria-current="page">Sumbangan</a>
+      <a href="contact.html">Hubungi</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="donation-intro">
+      <h2>Bantu Usaha Kami</h2>
+      <p>Setiap sumbangan anda membantu kami untuk terus berkhidmat kepada masyarakat dalam bidang dakwah, pendidikan dan kebajikan.</p>
+    </section>
+
+    <section class="donation-options">
+      <h2>Pilih Jenis Sumbangan</h2>
+      <div class="donation-types">
+        <div class="donation-type">
+          <h3>🕌 Pembangunan Surau</h3>
+          <p>Bantu pembangunan dan penyelenggaraan surau</p>
+        </div>
+        <div class="donation-type">
+          <h3>📚 Program Pendidikan</h3>
+          <p>Sokong program pengajian dan kelas fardhu ain</p>
+        </div>
+        <div class="donation-type">
+          <h3>🤝 Bantuan Asnaf</h3>
+          <p>Bantu golongan yang memerlukan</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="donation-form">
+      <h2>Buat Sumbangan</h2>
+      <form id="donationForm" onsubmit="return processDonation(event)">
+        <div class="form-group">
+          <label for="donorName">Nama Penuh:</label>
+          <input type="text" id="donorName" name="donorName" required>
+        </div>
+
+        <div class="form-group">
+          <label for="donorEmail">Email:</label>
+          <input type="email" id="donorEmail" name="donorEmail" required>
+        </div>
+
+        <div class="form-group">
+          <label for="donorPhone">No. Telefon:</label>
+          <input type="tel" id="donorPhone" name="donorPhone" required>
+        </div>
+
+        <div class="form-group">
+          <label for="donationType">Jenis Sumbangan:</label>
+          <select id="donationType" name="donationType" required>
+            <option value="">Pilih Jenis Sumbangan</option>
+            <option value="surau">Pembangunan Surau</option>
+            <option value="education">Program Pendidikan</option>
+            <option value="asnaf">Bantuan Asnaf</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="donationAmount">Jumlah Sumbangan (RM):</label>
+          <div class="amount-options">
+            <button type="button" class="amount-btn" data-amount="10">RM 10</button>
+            <button type="button" class="amount-btn" data-amount="50">RM 50</button>
+            <button type="button" class="amount-btn" data-amount="100">RM 100</button>
+            <button type="button" class="amount-btn" data-amount="custom">Lain-lain</button>
+          </div>
+          <input type="number" id="donationAmount" name="donationAmount" min="1" step="0.01" required>
+        </div>
+
+        <div class="form-group">
+          <label for="paymentMethod">Kaedah Pembayaran:</label>
+          <select id="paymentMethod" name="paymentMethod" required>
+            <option value="">Pilih Kaedah Pembayaran</option>
+            <option value="tng">Touch 'n Go</option>
+            <option value="shopee">ShopeePay</option>
+          </select>
+        </div>
+
+        <div id="paymentDetails" class="payment-details" style="display: none;">
+          <!-- Payment details will be shown here based on selection -->
+        </div>
+
+        <button type="submit" class="btn">Buat Sumbangan</button>
+      </form>
+      <div id="donationStatus" class="donation-status"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Salam Sakinah x NGOsalam Sakinah. Hak Cipta Terpelihara.</p>
+    <p>Dibangunkan dengan ❤️ untuk komuniti</p>
+  </footer>
+
+  <script>
+    // Handle donation amount buttons
+    document.querySelectorAll('.amount-btn').forEach(button => {
+      button.addEventListener('click', function() {
+        const amount = this.dataset.amount;
+        const amountInput = document.getElementById('donationAmount');
+        
+        if (amount === 'custom') {
+          amountInput.value = '';
+          amountInput.focus();
+        } else {
+          amountInput.value = amount;
+        }
+      });
+    });
+
+    // Handle payment method selection
+    document.getElementById('paymentMethod').addEventListener('change', function() {
+      const paymentDetails = document.getElementById('paymentDetails');
+      const method = this.value;
+
+      switch(method) {
+        case 'tng':
+          paymentDetails.innerHTML = `
+            <p>Scan QR code Touch 'n Go berikut:</p>
+            <img src="images/tng-qr.png" alt="Touch 'n Go QR Code" style="max-width: 200px;">
+          `;
+          paymentDetails.style.display = 'block';
+          break;
+        case 'shopee':
+          paymentDetails.innerHTML = `
+            <p>Scan QR code ShopeePay berikut:</p>
+            <img src="images/shopee-qr.png" alt="ShopeePay QR Code" style="max-width: 200px;">
+          `;
+          paymentDetails.style.display = 'block';
+          break;
+        default:
+          paymentDetails.style.display = 'none';
+      }
+    });
+
+    function processDonation(event) {
+      event.preventDefault();
+      
+      const form = document.getElementById('donationForm');
+      const statusDiv = document.getElementById('donationStatus');
+      
+      // Show loading state
+      statusDiv.innerHTML = '<p class="loading">Memproses sumbangan anda...</p>';
+      
+      // Here you would typically integrate with a payment gateway
+      // For now, we'll just show a success message
+      setTimeout(() => {
+        statusDiv.innerHTML = `
+          <p class="success">
+            Terima kasih atas sumbangan anda!<br>
+            Sila buat pembayaran mengikut kaedah yang dipilih.<br>
+            Kami akan menghubungi anda untuk pengesahan.
+          </p>
+        `;
+        form.reset();
+        document.getElementById('paymentDetails').style.display = 'none';
+      }, 2000);
+      
+      return false;
+    }
+  </script>
+
+</body>
+</html>

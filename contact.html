@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Hubungi Salam Sakinah - Lokasi, maklumat hubungan dan borang untuk menghubungi kami." />
+  <meta name="keywords" content="surau, masjid, islam, hubungi, lokasi, peta" />
+  <meta name="author" content="Salam Sakinah" />
+  <title>Hubungi Kami | Salam Sakinah</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script>
+    (function() {
+      // Initialize EmailJS with your public key
+      emailjs.init("Ek_f4C1RlZJbYyDLC"); // Public Key
+    })();
+  </script>
+</head>
+<body>
+
+  <header>
+    <h1>Hubungi Kami</h1>
+    <nav aria-label="Main navigation">
+      <a href="index.html">Utama</a>
+      <a href="about.html">Tentang Kami</a>
+      <a href="programs.html">Program</a>
+      <a href="donation.html">Sumbangan</a>
+      <a href="contact.html" aria-current="page">Hubungi</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="contact-info" aria-labelledby="location">
+      <h2 id="location">📍 Lokasi Surau</h2>
+      <p>Salam Sakinah, Jalan Aman, Taman Damai, 43000 Kajang, Selangor</p>
+
+      <div class="map-container">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3983.123456789012!2d101.7890123456789!3d2.987654321098765!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cdc1234567890%3A0x987654321098765!2sSalam%20Sakinah!5e0!3m2!1sen!2smy!4v1234567890123!5m2!1sen!2smy" 
+          width="100%" 
+          height="400" 
+          style="border:0;" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Peta Lokasi Surau Salam Sakinah">
+        </iframe>
+      </div>
+
+      <div class="location-actions">
+        <a href="https://www.google.com/maps/dir//Salam+Sakinah,+Jalan+Aman,+Taman+Damai,+43000+Kajang,+Selangor/@2.9876543,101.7890123,15z/data=!4m8!4m7!1m0!1m5!1m1!1s0x31cdc1234567890:0x987654321098765!2m2!1d101.7890123!2d2.9876543" 
+           target="_blank" 
+           class="btn" 
+           role="button">
+          Dapatkan Arahan
+        </a>
+      </div>
+    </section>
+
+    <section class="contact-methods" aria-labelledby="contact-methods">
+      <h2 id="contact-methods">📱 Hubungi Kami Terus</h2>
+      <div class="contact-options">
+        <div class="contact-option">
+          <h3>WhatsApp</h3>
+          <a href="https://wa.me/60123456789" target="_blank" class="btn" role="button">
+            Klik untuk WhatsApp
+          </a>
+        </div>
+        
+        <div class="contact-option">
+          <h3>Email</h3>
+          <a href="#contact-form" class="btn" role="button">
+            smuhd5638@gmail.com
+          </a>
+        </div>
+        
+        <div class="contact-option">
+          <h3>Facebook</h3>
+          <a href="https://facebook.com/salam sakinah" target="_blank" class="btn" role="button">
+            fb.com/salamsakinah
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-form" aria-labelledby="contact-form">
+      <h2 id="contact-form">📬 Hantar Mesej</h2>
+      <form id="contactForm" onsubmit="return sendEmail(event)">
+        <div class="form-group">
+          <label for="name">Nama Penuh:</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+
+        <div class="form-group">
+          <label for="subject">Subjek:</label>
+          <input type="text" id="subject" name="subject" required>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Mesej Anda:</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+        </div>
+
+        <button type="submit" class="btn">Hantar</button>
+      </form>
+      <div id="formStatus" class="form-status"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Salam Sakinah x NGOsalam Sakinah. Hak Cipta Terpelihara.</p>
+    <p>Dibangunkan dengan ❤️ untuk komuniti</p>
+  </footer>
+
+  <script>
+    function sendEmail(event) {
+      event.preventDefault();
+      
+      const form = document.getElementById('contactForm');
+      const statusDiv = document.getElementById('formStatus');
+      
+      // Show loading state
+      statusDiv.innerHTML = '<p class="loading">Sedang menghantar mesej...</p>';
+      
+      const templateParams = {
+        to_name: "Salam Sakinah",
+        from_name: form.name.value,
+        from_email: form.email.value,
+        subject: form.subject.value,
+        message: form.message.value,
+        reply_to: form.email.value,
+        to_email: "smuhd5638@gmail.com"
+      };
+
+      emailjs.send("service_qqxvxzp", "template_qqxvxzp", templateParams)
+        .then(function(response) {
+          console.log("SUCCESS!", response.status, response.text);
+          statusDiv.innerHTML = '<p class="success">Mesej berjaya dihantar! Kami akan menghubungi anda secepat mungkin.</p>';
+          form.reset();
+        }, function(error) {
+          console.log("FAILED...", error);
+          statusDiv.innerHTML = '<p class="error">Maaf, terdapat masalah menghantar mesej. Sila cuba lagi atau hubungi kami melalui cara lain.</p>';
+        });
+      
+      return false;
+    }
+  </script>
+
+</body>
+</html>

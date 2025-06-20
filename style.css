@@ -1,0 +1,699 @@
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-color: #198754;
+  --secondary-color: #146c43;
+  --text-color: #333;
+  --light-bg: #f8f9fa;
+  --white: #ffffff;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: var(--text-color);
+  background: var(--white);
+}
+
+/* Header Styles */
+header {
+  background-color: var(--primary-color);
+  color: var(--white);
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+header h1 {
+  margin-bottom: 1rem;
+  font-size: 2.5rem;
+}
+
+nav {
+  margin-top: 1rem;
+}
+
+nav a {
+  margin: 0 1rem;
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+nav a:hover {
+  background-color: var(--secondary-color);
+}
+
+/* Main Content Styles */
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+section {
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background: var(--white);
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+h2 {
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+}
+
+h3 {
+  color: var(--secondary-color);
+  margin-bottom: 1rem;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(135deg, #e0fce5 0%, #c8f5d0 100%);
+  text-align: center;
+  padding: 4rem 2rem;
+  border-radius: 12px;
+}
+
+.hero h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Button Styles */
+.btn {
+  display: inline-block;
+  background: var(--primary-color);
+  color: var(--white);
+  padding: 12px 24px;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: var(--secondary-color);
+}
+
+/* List Styles */
+ul {
+  list-style-position: inside;
+  margin-left: 1rem;
+}
+
+li {
+  margin-bottom: 0.5rem;
+}
+
+/* Footer Styles */
+footer {
+  background: var(--text-color);
+  color: var(--white);
+  text-align: center;
+  padding: 2rem;
+  margin-top: 3rem;
+}
+
+/* Quick Links Section */
+.quick-links {
+  text-align: center;
+}
+
+.link-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.link-grid .btn {
+  width: 100%;
+  text-align: center;
+}
+
+/* Improve existing styles */
+.highlight {
+  background: var(--light-bg);
+  border-radius: 12px;
+}
+
+.highlight ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.highlight li {
+  margin-bottom: 1rem;
+  padding-left: 2rem;
+  position: relative;
+}
+
+.highlight li::before {
+  content: "✅";
+  position: absolute;
+  left: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 2rem;
+  }
+  
+  nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  nav a {
+    margin: 0;
+  }
+  
+  main {
+    padding: 1rem;
+  }
+  
+  section {
+    padding: 1.5rem;
+  }
+  
+  .hero {
+    padding: 2rem 1rem;
+  }
+}
+
+/* Donation Page Styles */
+.donation-intro {
+  text-align: center;
+  background: linear-gradient(135deg, #fff5f5 0%, #ffe3e3 100%);
+  padding: 3rem 2rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+}
+
+.donation-methods {
+  background: var(--white);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.donation-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.donation-option {
+  text-align: center;
+  padding: 2rem;
+  background: var(--light-bg);
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.donation-option:hover {
+  transform: translateY(-5px);
+}
+
+.donation-option h4 {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.donation-option p {
+  margin-bottom: 1.5rem;
+}
+
+.donation-info {
+  margin-top: 2rem;
+  background: var(--light-bg);
+  padding: 2rem;
+  border-radius: 12px;
+}
+
+.donation-info ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.donation-info li {
+  margin-bottom: 1rem;
+  padding-left: 2rem;
+  position: relative;
+}
+
+.donation-info li::before {
+  content: "✅";
+  position: absolute;
+  left: 0;
+}
+
+@media (max-width: 768px) {
+  .donation-options {
+    grid-template-columns: 1fr;
+  }
+  
+  .donation-option {
+    padding: 1.5rem;
+  }
+}
+.countdown-section {
+  background: #fff7e6;
+  text-align: center;
+  padding: 1.5rem;
+  margin: 2rem auto;
+  border-radius: 12px;
+  max-width: 600px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+.prayer-times {
+  padding: 1.5rem;
+  background-color: #f2f8f5;
+  margin: 2rem auto;
+  border-radius: 12px;
+  max-width: 700px;
+  text-align: center;
+}
+
+/* Contact Page Styles */
+.map-container {
+  width: 100%;
+  max-width: 800px;
+  margin: 2rem auto;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.location-actions {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.contact-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.contact-option {
+  text-align: center;
+  padding: 2rem;
+  background: var(--light-bg);
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.contact-option:hover {
+  transform: translateY(-5px);
+}
+
+.contact-option h3 {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: var(--white);
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+@media (max-width: 768px) {
+  .map-container {
+    margin: 1rem auto;
+  }
+  
+  .contact-options {
+    grid-template-columns: 1fr;
+  }
+  
+  .contact-option {
+    padding: 1.5rem;
+  }
+  
+  .contact-form {
+    padding: 1.5rem;
+  }
+}
+
+/* Prayer Times Page Styles */
+.prayer-times-hero {
+  text-align: center;
+  background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%);
+  padding: 3rem 2rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+}
+
+.date-display {
+  font-size: 1.25rem;
+  margin-top: 1rem;
+  color: var(--secondary-color);
+  font-weight: 500;
+}
+
+.prayer-times-container {
+  background: var(--white);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.prayer-times-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.prayer-time {
+  text-align: center;
+  padding: 2rem;
+  background: var(--light-bg);
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.prayer-time:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.prayer-time h3 {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.prayer-time .time {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--secondary-color);
+}
+
+.prayer-info {
+  margin-top: 2rem;
+  background: var(--light-bg);
+  padding: 2rem;
+  border-radius: 12px;
+}
+
+.prayer-info ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.prayer-info li {
+  margin-bottom: 1rem;
+  padding-left: 2rem;
+  position: relative;
+}
+
+.prayer-info li::before {
+  content: "✅";
+  position: absolute;
+  left: 0;
+}
+
+@media (max-width: 768px) {
+  .prayer-times-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .prayer-time {
+    padding: 1.5rem;
+  }
+
+  .prayer-time .time {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .prayer-times-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Ramadan Countdown Styles */
+.ramadan-countdown {
+  text-align: center;
+  background: linear-gradient(135deg, #fff5e6 0%, #ffe0b2 100%);
+  padding: 3rem 2rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+}
+
+.countdown-container {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.countdown-item {
+  background: var(--white);
+  padding: 1.5rem;
+  border-radius: 8px;
+  min-width: 100px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.countdown-item span {
+  display: block;
+}
+
+.countdown-item span:first-child {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.countdown-label {
+  font-size: 1rem;
+  color: var(--text-color);
+}
+
+.ramadan-message {
+  margin-top: 2rem;
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+.hijri-date {
+  margin-top: 0.5rem;
+  font-size: 1.1rem;
+  color: var(--secondary-color);
+}
+
+/* Update Prayer Time Styles */
+.prayer-time {
+  position: relative;
+  overflow: hidden;
+}
+
+.prayer-time .time {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--secondary-color);
+  margin: 1rem 0;
+}
+
+.prayer-time .countdown {
+  font-size: 0.9rem;
+  color: var(--primary-color);
+  background: rgba(25, 135, 84, 0.1);
+  padding: 0.5rem;
+  border-radius: 4px;
+  margin-top: 0.5rem;
+}
+
+/* Responsive Styles for Ramadan Countdown */
+@media (max-width: 768px) {
+  .countdown-container {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .countdown-item {
+    min-width: 80px;
+    padding: 1rem;
+  }
+
+  .countdown-item span:first-child {
+    font-size: 2rem;
+  }
+
+  .countdown-label {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .countdown-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .countdown-item {
+    min-width: 70px;
+  }
+
+  .countdown-item span:first-child {
+    font-size: 1.5rem;
+  }
+}
+
+/* Upcoming Events Styles */
+.upcoming-events {
+  padding: 2rem;
+  background: var(--white);
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.event-card {
+  background: var(--light-bg);
+  padding: 2rem;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+  text-align: center;
+}
+
+.event-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.event-date {
+  background: var(--primary-color);
+  color: var(--white);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  display: inline-block;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.event-card h4 {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+}
+
+.event-card p {
+  margin-bottom: 1.5rem;
+  color: var(--text-color);
+}
+
+.event-card .btn {
+  width: 100%;
+  margin-top: auto;
+}
+
+@media (max-width: 768px) {
+  .events-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .event-card {
+    padding: 1.5rem;
+  }
+}
+
+/* Form Status Styles */
+.form-status {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.form-status p {
+  padding: 0.75rem;
+  border-radius: 4px;
+  margin: 0;
+}
+
+.form-status .loading {
+  background-color: #e3f2fd;
+  color: #1976d2;
+}
+
+.form-status .success {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+
+.form-status .error {
+  background-color: #ffebee;
+  color: #c62828;
+}
